@@ -32,16 +32,61 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+##
+gem 'pry-rails', '0.3.4'
+### bootstrap
+gem 'twitter-bootstrap-rails'
+### 
+gem 'jquery-turbolinks'
+### Heroku上でのロギングに必要
+gem 'rails_12factor', group: :production
+### ログイン機能
+gem 'devise'
+### ダミーデータの作成
+gem 'faker'
+### 管理画面作成
+gem 'rails_admin'
+### 権限管理
+gem 'cancan'
+### oauth認証
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+### 画像アップローダー
+gem 'carrierwave'
+### 画像のリサイズなど
+gem 'rmagick'
+### pusher
+gem 'pusher'
+### 環境変数の設定
+gem 'dotenv-rails'
+### クラウドサービスライブラリ
+gem 'fog'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-end
-
-group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+
   gem 'spring'
+  ### ブラウザからメールの受信を確認できるようにする
+  gem 'letter_opener'
+  ### エラーの可視化
+  gem 'better_errors'
+  ### ステップ実行などのデバッグ
+  gem 'pry-byebug'
+  ### capistrano
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-rails-db'
 end
 
+group :production, :staging do
+  ### 
+  gem 'unicorn'
+end
