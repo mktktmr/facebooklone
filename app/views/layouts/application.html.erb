@@ -8,7 +8,9 @@
 </head>
 <body>
 
-<%= yield %>
+  <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+
+  <%= yield %>
 
 </body>
 </html>
