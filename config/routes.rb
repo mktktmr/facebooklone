@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :topics, only: [:create, :update, :destroy] do
+    resources :comments, only: [:create, :update, :destroy], shallow: true
+  end
+
   devise_for :users
   
   root 'home#index'
