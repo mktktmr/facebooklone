@@ -14,6 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="/"><%= image_tag 'no_image.png', size: '20x20', style: 'margin-right: 10px' %><%= current_user.name %></a></li>
         <li><%= link_to 'ホーム', root_path %></li>
         <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
         <li><a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"><span class="badge"></span></span></a></li>
