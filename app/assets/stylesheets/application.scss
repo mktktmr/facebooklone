@@ -1,0 +1,17 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+
+$brand-primary: darken(#4267b2, 6.5%);
+
+// Navbar
+$navbar-default-bg: darken(#4267b2, 6.5%); // #f8f8f8
+$navbar-default-color: #fff; // #777
+$navbar-default-link-color: #fff; // #777
+
+$navbar-default-link-hover-color: #fff; // #333
+$navbar-default-link-active-color: #fff; // #555
+$navbar-default-link-disabled-color: #ccc; //#ccc
+$navbar-default-toggle-hover-bg: #ddd; // #ddd
+$navbar-default-toggle-icon-bar-bg: #888; // #888
+
+@import "bootstrap-sprockets";
+@import "bootstrap";

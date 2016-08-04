@@ -35,7 +35,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 ##
 gem 'pry-rails', '0.3.4'
 ### bootstrap
-gem 'twitter-bootstrap-rails'
+#gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
 ### 
 gem 'jquery-turbolinks'
 ### Heroku上でのロギングに必要
