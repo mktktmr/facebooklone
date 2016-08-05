@@ -45,3 +45,6 @@ bower.json
 
 # OS X system file
 .DS_Store
+
+# 
+public/uploads
