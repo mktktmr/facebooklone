@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :update, :destroy], shallow: true
   end
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
   
   root 'home#index'
 
