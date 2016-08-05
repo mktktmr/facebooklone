@@ -15,7 +15,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><a href="/"><%= image_tag 'no_image.png', size: '20x20', style: 'margin-right: 10px' %><%= current_user.name %></a></li>
+          <li>
+            <%= link_to edit_user_registration_path do %>
+              <%= profile_img current_user, { size: '20x20', style: 'margin-right: 10px' } %><%= current_user.name %>
+            <% end %>
+          </li>
           <li><%= link_to 'ホーム', root_path %></li>
           <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
           <li><a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"><span class="badge"></span></span></a></li>
@@ -40,4 +44,3 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
