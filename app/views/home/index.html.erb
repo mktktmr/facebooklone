@@ -5,22 +5,38 @@
         <div class="form-group">
           <%= f.text_area :content, size: '30x3', placeholder: '今なにしてる？', class: 'form-control' %>
         </div>
-        <%= f.submit '投稿する', class: 'btn btn-primary pull-right' %>
+        <div class="form-group text-right">
+          <%= f.submit '投稿する', class: 'btn btn-primary' %>
+        </div>
       <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-offset-3 col-md-6">
-      <% @topics.each do |topic| %>
-        <%= topic.user.name %>
-        <%= simple_format topic.content %>
-        <% topic.comments.each do |comment| %>
-          <%= comment.user.name %>
-          <%= comment.content %>
-        <% end %>
-        <%= form_for [topic, Comment.new] do |f| %>
-          <%= f.text_field :content, placeholder: 'コメントする', class: 'form-control' %>
-          <%= hidden_field_tag 'comment[user_id]', current_user.id %>
+      <% @topics.each_with_index do |topic, i| %>
+        
+        <% if current_user.id.in? topic.user.each_follow_user_ids ||
+             current_user.id == topic.user.id %>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <%= profile_img topic.user, size: '30x30' %><%= topic.user.name %>
+              <%= simple_format topic.content %>
+            </div>
+            <ul class="list-group">
+              <% topic.comments.each do |comment| %>
+                <li class="list-group-item">
+                  <%= profile_img comment.user, size: '30x30' %><%= comment.user.name %>
+                  <%= comment.content %>
+                </li>
+              <% end %>
+            </ul>
+            <div class="panel-body">
+              <%= form_for [topic, Comment.new] do |f| %>
+                <%= f.text_field :content, placeholder: 'コメントする', class: 'form-control' %>
+                <%= hidden_field_tag 'comment[user_id]', current_user.id %>
+              <% end %>
+            </div>
+          </div>
         <% end %>
       <% end %>
     </div>

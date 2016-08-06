@@ -1,0 +1,5 @@
+$('#user-modal-body').html('<%= j render 'user_list', { users: @users } %>');
+$('#user-modal-footer').html('<%= j render 'modal_footer', { page_no: @page_no,
+                                                             has_pre: @has_pre,
+                                                             has_next: @has_next } %>');
+$('#user-modal').modal('show');

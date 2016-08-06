@@ -1,0 +1,14 @@
+<ul style="padding-left: 0px">
+  <% users.each_with_index do |user, i| %>
+    <% if i > 0 %><hr><% end %>
+    <li style="list-style-type: none" id="li-user-<%= user.id %>">
+      <%= profile_img user, { size: '30x30', style: 'margin-right: 10px' } %>
+      <%= user.name %>
+      <% if current_user.following?(user) %>
+        <%= render 'users/unfollow_form', user: user %>
+      <% else %>
+        <%= render 'users/follow_form', user: user %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

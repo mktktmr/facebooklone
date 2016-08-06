@@ -1,0 +1,4 @@
+<div class="text-center">
+  <%= link_to  '前', "/users/index/#{page_no - 1}", data: { remote: true } if has_pre %>
+  <%= link_to  '次', "/users/index/#{page_no + 1}", data: { remote: true } if has_next %>
+</div>

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'users/index/:page_no' => 'users#index'
+
+  get 'users/message/:page_no' => 'users#message'
+
+  resources :relationships, only: [:create, :destroy]
+
   resources :topics, only: [:create, :update, :destroy] do
     resources :comments, only: [:create, :update, :destroy], shallow: true
   end

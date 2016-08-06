@@ -1,0 +1,5 @@
+$('#message-modal-body').html('<%= j render 'message_list', { users: @users } %>');
+$('#message-modal-footer').html('<%= j render 'modal_footer', { page_no: @page_no,
+                                                                has_pre: @has_pre,
+                                                                has_next: @has_next } %>');
+$('#message-modal').modal('show');

@@ -1,0 +1,5 @@
+<%= form_for(current_user.relationships.find_by(followed_id: user.id),
+              html: { method: :delete, class: 'pull-right' },
+              remote: true) do |f| %>
+  <%= f.submit "友達解除", class: "btn btn-default" %>
+<% end %>

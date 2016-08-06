@@ -1,0 +1,9 @@
+<ul style="padding-left: 0px">
+  <% users.each_with_index do |user, i| %>
+    <% if i > 0 %><hr><% end %>
+    <li style="list-style-type: none" id="li-message-<%= user.id %>">
+      <%= profile_img user, { size: '30x30', style: 'margin-right: 10px' } %>
+      <%= user.name %>
+    </li>
+  <% end %>
+</ul>

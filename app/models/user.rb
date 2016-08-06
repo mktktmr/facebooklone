@@ -10,12 +10,49 @@ class User < ActiveRecord::Base
   has_many :topics
   has_many :comments
 
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_relationships, source: :follower
+
   def email_required?
     super && provider.blank?
   end
 
   def self.create_unique_string
     SecureRandom.uuid
+  end
+  
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  def each_follow_users
+    users = []
+    followers.each do |f|
+      f.followers.each do |ff|
+        users.append f if ff.id == id
+      end
+    end
+    users
+  end
+
+  def each_follow_user_ids
+    ids = []
+    followers.each do |f|
+      f.followers.ids.each do |ffid|
+        ids.append f.id if ffid == id
+      end
+    end
+    ids
   end
   
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)

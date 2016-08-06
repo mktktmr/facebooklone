@@ -21,8 +21,16 @@
             <% end %>
           </li>
           <li><%= link_to 'ホーム', root_path %></li>
-          <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"><span class="badge"></span></span></a></li>
+          <li>
+            <%= link_to '/users/index/0.js', data: { remote: true } do %>
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '/users/message/0.js', data: { remote: true } do %>
+              <span class="glyphicon glyphicon-comment" aria-hidden="true"><span class="badge"></span></span>
+            <% end %>
+          </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
             <ul class="dropdown-menu">

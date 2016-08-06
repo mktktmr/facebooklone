@@ -1,0 +1,2 @@
+$('#li-user-<%= @user.id %>').children('form').remove();
+$('#li-user-<%= @user.id %>').append('<%= j render 'users/follow_form', user: @user %>');
