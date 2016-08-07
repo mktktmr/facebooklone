@@ -1,0 +1,17 @@
+<% messages.each do |msg|  %>
+  <% if msg.sender.id == current_user.id %>
+    <div class="row">
+      <div class="pull-right">
+        <div class="alert alert-info"><%= simple_format msg.content %></div>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="pull-left">
+        <%= profile_img msg.recepient, size: '30x30' %>
+        <span style="font-weight: bold;"><%= msg.recepient.name %></span>
+        <div class="well well-sm"><%= simple_format msg.content %></div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

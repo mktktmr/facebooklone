@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
 
+  has_many :sender, class_name: :Message, foreign_key: :sender_id
+  has_many :recepient, class_name: :Message, foreign_key: :sender_id
+
   def email_required?
     super && provider.blank?
   end

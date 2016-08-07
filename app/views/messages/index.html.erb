@@ -1,0 +1,19 @@
+<div class="container">
+  <h2 class="text-center"></h2>
+  
+  <div class="col-md-offset-4 col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><%= @recepient.name %></div>
+      <div class="panel-body" id="message-panel" style="height: 400px; overflow: auto">
+        <%= render 'panel_body', messages: @messages %>
+      </div>
+    </div>
+    <%= form_for Message.new, remote: true do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, rows: 1, class: 'form-control' %>
+        <%= f.hidden_field :recepient_id, value: @recepient_id %>
+      </div>
+      <%= f.submit '送信する', class: 'btn btn-primary pull-right' %>
+    <% end %>
+  </div>
+</div>

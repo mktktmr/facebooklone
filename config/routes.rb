@@ -3,12 +3,16 @@ Rails.application.routes.draw do
   get 'users/index/:page_no' => 'users#index'
 
   get 'users/message/:page_no' => 'users#message'
+  
+  get 'messages/index/:recepient_id' => 'messages#index'
 
   resources :relationships, only: [:create, :destroy]
 
   resources :topics, only: [:create, :update, :destroy] do
     resources :comments, only: [:create, :update, :destroy], shallow: true
   end
+  
+  resources :messages, only: [:create, :update, :destroy]
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
