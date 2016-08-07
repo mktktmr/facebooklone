@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
           password: Devise.friendly_token[0, 20]
       )
       # 確認メールの処理を飛ばす
-      # user.skip_confirmation! # TODO: deviseのconfirmableを利用する場合にコメントアウトを外す
+      user.skip_confirmation! # deviseのconfirmableを利用する場合にコメントアウトを外す
 
       user.save(validate: false)
     end
@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
           email:    auth.info.email,
           password: Devise.friendly_token[0, 20],
       )
-      # user.skip_confirmation! # TODO: deviseのconfirmableを利用する場合にコメントアウトを外す
+      user.skip_confirmation! # deviseのconfirmableを利用する場合にコメントアウトを外す
       user.save
     end
     user
