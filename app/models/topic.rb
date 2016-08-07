@@ -3,5 +3,6 @@ class Topic < ActiveRecord::Base
   belongs_to :user
 
   validates :content, presence: true
-  
+
+  mount_uploader :picture, PictureUploader
 end
