@@ -9,11 +9,11 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
-  resources :topics, only: [:create, :update, :destroy] do
-    resources :comments, only: [:create, :update, :destroy], shallow: true
+  resources :topics, only: [:create, :edit, :update, :destroy] do
+    resources :comments, only: [:create, :edit, :update, :destroy], shallow: true
   end
   
-  resources :messages, only: [:create, :update, :destroy]
+  resources :messages, only: [:create, :edit, :update, :destroy]
 
   devise_for :users, controllers: {
     registrations: "users/registrations",

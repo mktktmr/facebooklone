@@ -1,14 +1,19 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-offset-3 col-md-6">
-      
-      <%= notice %>
-      <%= alert %>
+
+      <% if notice %>
+        <div class="alert alert-success"><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-danger"><%= alert %></div>
+      <% end %>
 
       <%= form_for @topic do |f| %>
         <div class="form-group">
           <%= f.file_field :picture %>
           <%= f.hidden_field :picture_cache %>
+          <span></span>
           <%= render 'commons/error', model: @topic %>
           <%= f.text_area :content, size: '30x3', placeholder: '今なにしてる？', class: 'form-control' %>
         </div>
@@ -27,8 +32,12 @@
             <div class="panel-body">
               <%= profile_img topic.user, size: '30x30', style: 'margin-right: 10px' %>
               <span style="font-weight: bold"><%= topic.user.name %></span>
-              <div><%= image_tag(topic.picture) if topic.picture %></div>
+              <div><%= image_tag(topic.picture, style: 'max-width: 100%') if topic.picture %></div>
               <%= simple_format topic.content %>
+              <%= form_for topic, method: :delete, html: { class: 'pull-right' } do |f|%>
+                <%= f.button '削除する', class: "btn btn-danger", data: { confirm: '削除してよろしいですか？' } %>
+              <% end %>
+              <%= link_to '編集する', edit_topic_path(topic), data: { remote: true }, class: 'btn btn-success pull-right' %>
             </div>
             <ul class="list-group" id="comment-list-<%= topic.id %>">
               <%= render '/comments/comment_list', topic: topic %>

@@ -11,6 +11,8 @@
   <%= render 'layouts/header' %>
   <%= render 'users/user_modal' if user_signed_in? %>
   <%= render 'users/message_modal' if user_signed_in? %>
+  <%= render 'topics/edit_modal' if user_signed_in? %>
+  <%= render 'comments/edit_modal' if user_signed_in? %>
 
   <%= yield %>
 

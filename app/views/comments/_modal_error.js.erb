@@ -1,0 +1,3 @@
+var $form = $('#edit_comment_<%= @comment.id %>');
+$form.find('#error_explanation').remove();
+$form.prepend('<%= j render '/commons/error', model: @comment %>');
