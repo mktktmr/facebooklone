@@ -1,0 +1,12 @@
+<% topic.comments.each do |comment| %>
+  <li class="list-group-item">
+    <%= profile_img comment.user, size: '30x30', style: 'margin-right: 10px' %>
+    <span style="font-weight: bold"><%= comment.user.name %></span>
+    <%= comment.content %>
+    <%= form_for comment, method: :delete, remote: true, html: { class: 'pull-right' } do |f| %>
+      <button class="btn btn-danger">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      </button>
+    <% end %>
+  </li>
+<% end %>

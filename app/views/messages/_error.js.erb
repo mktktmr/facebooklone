@@ -1,0 +1,3 @@
+var $form = $('#message_form')
+$form.find('#error_explanation').remove()
+$form.prepend('<%= j render '/commons/error', model: @message %>')

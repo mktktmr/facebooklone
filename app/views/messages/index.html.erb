@@ -6,7 +6,7 @@
         <%= render 'panel_body', messages: @messages %>
       </div>
     </div>
-    <%= form_for Message.new, remote: true do |f| %>
+    <%= form_for @message, remote: true, html: { id: 'message_form' } do |f| %>
       <div class="form-group">
         <%= f.text_area :content, rows: 1, class: 'form-control' %>
         <%= f.hidden_field :recepient_id, value: @recepient_id %>

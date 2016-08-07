@@ -1,0 +1,2 @@
+$('#comment-list-<%= @comment.topic.id %>').html('<%= j render '/comments/comment_list', topic: @comment.topic %>');
+$('#comment-form-<%= @comment.topic.id %>').find('input[type="text"]').val('');

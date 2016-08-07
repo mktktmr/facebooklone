@@ -1,9 +1,9 @@
 class TopicsController < ApplicationController
   def create
-    topic = Topic.new(topic_params)
-    topic.user_id = current_user.id
+    @topic = Topic.new(topic_params)
+    @topic.user_id = current_user.id
 
-    if topic.save
+    if @topic.save
       redirect_to root_path
     else
       @topics = Topic.all

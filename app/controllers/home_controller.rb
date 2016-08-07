@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @topics = Topic.all.order(updated_at: :desc)
+    @topic = Topic.new
+    @topics = Topic.all.order updated_at: :DESC
   end
 end
