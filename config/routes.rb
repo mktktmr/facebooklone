@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'users/index/:page_no' => 'users#index'
 
   get 'users/message/:page_no' => 'users#message'
