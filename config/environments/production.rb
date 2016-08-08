@@ -1,14 +1,14 @@
 Rails.application.configure do
 
-  # TODO: メーラーの本番環境設定
-  config.action_mailer.default_url_options = { host: '自分のHerokuアプリのドメイン' }
+  config.action_mailer.default_url_options = { host: '52.193.219.157' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
   {
-   user_name: ENV['SENDGRID_USERNAME'],
-   password: ENV['SENDGRID_PASSWORD'],
-   domain: "heroku.com",
-   address: "smtp.sendgrid.net",
+   user_name: ENV['MAILER_ACCOUNT_NAME'],
+   password: ENV['MAILER_ACCOUNT_PASSWORD'],
+   #domain: "52.193.219.157",
+   domain: "smtp.gmail.com",
+   address: "smtp.gmail.com",
    port: 587,
    authentication: :plain,
    enable_starttls_auto: true
