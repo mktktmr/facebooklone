@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= profile_img(@user) if profile_img(@user) %>
+    <span><%= profile_img(@user) if profile_img(@user) %></span>
     <%= f.file_field :avatar %>
     <%= f.hidden_field :avatar_cache %>
   </div>

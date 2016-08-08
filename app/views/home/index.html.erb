@@ -34,10 +34,12 @@
               <span style="font-weight: bold"><%= topic.user.name %></span>
               <div><%= image_tag(topic.picture, style: 'max-width: 100%') if topic.picture %></div>
               <%= simple_format topic.content %>
-              <%= form_for topic, method: :delete, html: { class: 'pull-right' } do |f|%>
-                <%= f.button '削除する', class: "btn btn-danger", data: { confirm: '削除してよろしいですか？' } %>
+              <% if topic.user.id == current_user.id %>
+                <%= form_for topic, method: :delete, html: { class: 'pull-right' } do |f|%>
+                  <%= f.button '削除する', class: "btn btn-danger", data: { confirm: '削除してよろしいですか？' } %>
+                <% end %>
+                <%= link_to '編集する', edit_topic_path(topic), data: { remote: true }, class: 'btn btn-success pull-right' %>
               <% end %>
-              <%= link_to '編集する', edit_topic_path(topic), data: { remote: true }, class: 'btn btn-success pull-right' %>
             </div>
             <ul class="list-group" id="comment-list-<%= topic.id %>">
               <%= render '/comments/comment_list', topic: topic %>

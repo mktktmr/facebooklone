@@ -1,5 +1,5 @@
 <%= form_for topic, url: topic_path(topic, :js) do |f| %>
-  <%= f.file_field :picture, id: "hoge" %>
+  <%= f.file_field :picture %>
   <%= f.hidden_field :picture_cache %>
   <span><%= image_tag topic.picture, style: 'max-width: 100%' %></span>
   <div class="form-group">
